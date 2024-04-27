@@ -14,7 +14,7 @@ String folder = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDoc
         private void Form1_Load(object sender, EventArgs e)
         {
             WebClient wc = new WebClient();
-            wc.DownloadFileTaskAsync("https://github.com/freedeck/installer/releases/", folder+"\\fdtemp.zip");
+            wc.DownloadFileTaskAsync("https://freedeck.app/installer.zip", folder+"\\fdtemp.zip");
             wc.DownloadProgressChanged += Wc_DownloadProgressChanged;
             wc.DownloadFileCompleted += Wc_DownloadFileCompleted;
         }
