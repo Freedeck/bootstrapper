@@ -79,24 +79,25 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(118, 60);
+            textBox1.Location = new Point(119, 83);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(253, 23);
             textBox1.TabIndex = 4;
             // 
             // button2
             // 
-            button2.Location = new Point(377, 60);
+            button2.Location = new Point(378, 83);
             button2.Name = "button2";
-            button2.Size = new Size(38, 23);
+            button2.Size = new Size(85, 23);
             button2.TabIndex = 5;
-            button2.Text = "...";
+            button2.Text = "Change";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(20, 68);
+            label3.Location = new Point(13, 87);
             label3.Name = "label3";
             label3.Size = new Size(92, 15);
             label3.TabIndex = 6;
