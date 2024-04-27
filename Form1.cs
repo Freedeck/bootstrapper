@@ -1,4 +1,6 @@
+using System.Configuration;
 using System.Diagnostics;
+using System.IO;
 using System.IO.Compression;
 using System.Net;
 using IWshRuntimeLibrary;
@@ -88,9 +90,10 @@ namespace FreedeckLauncher
 
         private void StepTwo()
         {
-            richTextBox1.Text += "Step 2: Install npm dependencies";
+            richTextBox1.Text += "Step 2: Install npm dependencies\n";
             Process proc = new Process();
             proc.StartInfo.FileName = "npm";
+            proc.StartInfo.UseShellExecute = true;
             proc.StartInfo.ArgumentList.Add("i");
             proc.StartInfo.WorkingDirectory = where + "\\freedeck";
             proc.EnableRaisingEvents = true;
@@ -111,14 +114,38 @@ namespace FreedeckLauncher
         private void StepThree()
         {
             richTextBox1.Text += "Step 3: Creating desktop shortcuts!\n";
-            var startupFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            var shell = new WshShell();
-            var shortCutLinkFilePath = Path.Combine(startupFolderPath, @"\CreateShortcutSample.lnk");
-            var windowsApplicationShortcut = (IWshShortcut)shell.CreateShortcut(shortCutLinkFilePath);
-            windowsApplicationShortcut.Description = "How to create short for application example";
-            windowsApplicationShortcut.WorkingDirectory = Application.StartupPath;
-            windowsApplicationShortcut.TargetPath = Application.ExecutablePath;
-            windowsApplicationShortcut.Save();
+            CreateShortcut(
+                "Freedeck",
+                Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+                where + "\\freedeck\\init.bat", 
+                where + "\\freedeck",
+                where + "\\freedeck\\assets\\logo_big.ico"
+            );
+            CreateShortcut(
+                "Freedeck",
+                Environment.GetFolderPath(Environment.SpecialFolder.StartMenu),
+                where + "\\freedeck\\init.bat",
+                where + "\\freedeck",
+                where + "\\freedeck\\assets\\logo_big.ico"
+            );
+            progressBar1.Value = 100;
+            richTextBox1.Text += "Created shortcut on your Desktop!\n";
+            richTextBox1.Text += "\n\nFreedeck is now installed!\nHave fun!\n";
+            button1.Text = "Installed";
+            label2.Text = "Freedeck is currently installed on your machine. Have fun!";
+        }
+
+        public static void CreateShortcut(string shortcutName, string shortcutPath, string targetFileLocation, string arg, string icon)
+        {
+            string shortcutLocation = System.IO.Path.Combine(shortcutPath, shortcutName + ".lnk");
+            WshShell shell = new WshShell();
+            IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutLocation);
+
+            shortcut.Description = "The FOSS alternative to the Elgato Stream Deck.";   // The description of the shortcut
+            shortcut.IconLocation = @icon;           // The icon of the shortcut
+            shortcut.TargetPath = targetFileLocation;                 // The path of the file that will launch when the shortcut is run
+            shortcut.Arguments = arg;
+            shortcut.Save();
         }
 
         private void button2_Click(object sender, EventArgs e)
