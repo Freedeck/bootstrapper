@@ -72,7 +72,7 @@ namespace FreedeckLauncher
             proc.StartInfo.FileName = "git";
             proc.StartInfo.ArgumentList.Add("clone");
             proc.StartInfo.ArgumentList.Add("https://github.com/freedeck/freedeck");
-            proc.StartInfo.ArgumentList.Add(where+"\\freedeck");
+            proc.StartInfo.ArgumentList.Add(where + "\\freedeck");
             proc.EnableRaisingEvents = true;
             proc.Exited += Proc_Exited;
             proc.Start();
@@ -82,7 +82,7 @@ namespace FreedeckLauncher
         {
             this.Invoke((MethodInvoker)delegate
             {
-            richTextBox1.Text += "Cloned repository!\n";
+                richTextBox1.Text += "Cloned repository!\n";
                 progressBar1.Value = 20;
                 this.StepTwo();
             });
@@ -117,7 +117,7 @@ namespace FreedeckLauncher
             CreateShortcut(
                 "Freedeck",
                 Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
-                where + "\\freedeck\\init.bat", 
+                where + "\\freedeck\\init.bat",
                 where + "\\freedeck",
                 where + "\\freedeck\\assets\\logo_big.ico"
             );
@@ -128,11 +128,18 @@ namespace FreedeckLauncher
                 where + "\\freedeck",
                 where + "\\freedeck\\assets\\logo_big.ico"
             );
+            if (checkBox1.Checked) InstallHandoff();
+        }
+
+        private void InstallHandoff()
+        {
+            HandoffBootstrap handoffBootstrap = new HandoffBootstrap();
+            handoffBootstrap.ShowDialog();
             progressBar1.Value = 100;
             richTextBox1.Text += "Created shortcut on your Desktop!\n";
             richTextBox1.Text += "\n\nFreedeck is now installed!\nHave fun!\n";
             button1.Text = "Installed";
-            label2.Text = "Freedeck is currently installed on your machine. Have fun!";
+            label2.Text = "Freedeck is currently installed on your machine. Have fun!"; 
         }
 
         public static void CreateShortcut(string shortcutName, string shortcutPath, string targetFileLocation, string arg, string icon)
@@ -152,6 +159,26 @@ namespace FreedeckLauncher
         {
             folderBrowserDialog1.ShowDialog();
             textBox1.Text = folderBrowserDialog1.SelectedPath;
+        }
+        bool mag = true;
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (mag && checkBox1.Checked == false)
+            {
+                DialogResult sure = MessageBox.Show("Are you sure? You'll lose access to easy one-click plugin downloading on websites!", "Handoff", MessageBoxButtons.YesNo);
+                if (sure == DialogResult.Yes)
+                {
+                    mag = false;
+                    checkBox1.Checked = false;
+                    mag = true;
+                }
+                else
+                {
+                    mag = false;
+                    checkBox1.Checked = true;
+                    mag = true;
+                }
+            }
         }
     }
 }

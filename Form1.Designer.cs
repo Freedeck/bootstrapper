@@ -37,6 +37,9 @@
             button2 = new Button();
             label3 = new Label();
             richTextBox1 = new RichTextBox();
+            label4 = new Label();
+            checkBox1 = new CheckBox();
+            menuStrip1 = new MenuStrip();
             SuspendLayout();
             // 
             // label1
@@ -111,11 +114,42 @@
             richTextBox1.TabIndex = 7;
             richTextBox1.Text = "";
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(13, 115);
+            label4.Name = "label4";
+            label4.Size = new Size(0, 15);
+            label4.TabIndex = 8;
+            // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Checked = true;
+            checkBox1.CheckState = CheckState.Checked;
+            checkBox1.Location = new Point(13, 114);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(109, 19);
+            checkBox1.TabIndex = 9;
+            checkBox1.Text = "Install Handoff?";
+            checkBox1.UseVisualStyleBackColor = true;
+            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(478, 24);
+            menuStrip1.TabIndex = 10;
+            menuStrip1.Text = "menuStrip1";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(478, 247);
+            Controls.Add(checkBox1);
+            Controls.Add(label4);
             Controls.Add(richTextBox1);
             Controls.Add(label3);
             Controls.Add(button2);
@@ -124,6 +158,8 @@
             Controls.Add(label2);
             Controls.Add(progressBar1);
             Controls.Add(label1);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
             Name = "Form1";
             Text = "Freedeck Installer";
             Load += Form1_Load;
@@ -143,5 +179,8 @@
         private Button button2;
         private Label label3;
         private RichTextBox richTextBox1;
+        private Label label4;
+        private CheckBox checkBox1;
+        private MenuStrip menuStrip1;
     }
 }
