@@ -116,6 +116,7 @@ namespace FreedeckLauncher
         }
         private void StepThree()
         {
+            richTextBox1.Text += "Step 3: Downloading Launcher\n";
             LauncherBootstrap launcher = new LauncherBootstrap();
             launcher.ShowDialog();
             StepFour();
@@ -127,14 +128,14 @@ namespace FreedeckLauncher
             CreateShortcut(
                 "Freedeck",
                 Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
-                where + "\\freedeck\\init.bat",
+                where + "\\launcher.exe",
                 where + "\\freedeck",
                 where + "\\freedeck\\assets\\logo_big.ico"
             );
             CreateShortcut(
                 "Freedeck",
                 Environment.GetFolderPath(Environment.SpecialFolder.StartMenu),
-                where + "\\freedeck\\init.bat",
+                where + "\\launcher.exe",
                 where + "\\freedeck",
                 where + "\\freedeck\\assets\\logo_big.ico"
             );
@@ -145,10 +146,15 @@ namespace FreedeckLauncher
         private void Finished()
         {
             progressBar1.Value = 100;
-            richTextBox1.Text += "Created shortcut on your Desktop!\n";
+            richTextBox1.Text += "Created shortcut on your Desktop & Start menu!\n";
             richTextBox1.Text += "\n\nFreedeck is now installed!\nHave fun!\n";
             button1.Text = "Installed";
-            label2.Text = "Freedeck is currently installed on your machine. Have fun!";
+            label2.Text = "Freedeck is currently installed on your machine. Have fun!\n\nYou may now close the installer.";
+            using(Process proc = new Process())
+            {
+                proc.StartInfo.FileName = where + "\\launcher.exe";
+                proc.Start();
+            }
         }
 
         private void InstallHandoff()
