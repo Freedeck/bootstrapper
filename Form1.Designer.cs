@@ -39,14 +39,15 @@
             richTextBox1 = new RichTextBox();
             label4 = new Label();
             checkBox1 = new CheckBox();
-            menuStrip1 = new MenuStrip();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(10, 10);
+            label1.Location = new Point(2, 2);
             label1.Name = "label1";
             label1.Size = new Size(110, 32);
             label1.TabIndex = 0;
@@ -54,9 +55,9 @@
             // 
             // progressBar1
             // 
-            progressBar1.Location = new Point(92, 212);
+            progressBar1.Location = new Point(110, 171);
             progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(370, 23);
+            progressBar1.Size = new Size(266, 23);
             progressBar1.TabIndex = 1;
             progressBar1.Click += progressBar1_Click;
             // 
@@ -64,7 +65,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(12, 42);
+            label2.Location = new Point(4, 34);
             label2.Name = "label2";
             label2.Size = new Size(450, 15);
             label2.TabIndex = 2;
@@ -72,7 +73,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(10, 212);
+            button1.Location = new Point(379, 171);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 3;
@@ -82,14 +83,14 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(119, 83);
+            textBox1.Location = new Point(100, 52);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(253, 23);
             textBox1.TabIndex = 4;
             // 
             // button2
             // 
-            button2.Location = new Point(378, 83);
+            button2.Location = new Point(359, 52);
             button2.Name = "button2";
             button2.Size = new Size(85, 23);
             button2.TabIndex = 5;
@@ -100,7 +101,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(13, 87);
+            label3.Location = new Point(2, 56);
             label3.Name = "label3";
             label3.Size = new Size(92, 15);
             label3.TabIndex = 6;
@@ -108,9 +109,9 @@
             // 
             // richTextBox1
             // 
-            richTextBox1.Location = new Point(92, 142);
+            richTextBox1.Location = new Point(4, 81);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(370, 64);
+            richTextBox1.Size = new Size(292, 84);
             richTextBox1.TabIndex = 7;
             richTextBox1.Text = "";
             // 
@@ -127,27 +128,31 @@
             checkBox1.AutoSize = true;
             checkBox1.Checked = true;
             checkBox1.CheckState = CheckState.Checked;
-            checkBox1.Location = new Point(13, 114);
+            checkBox1.Location = new Point(4, 175);
             checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(109, 19);
+            checkBox1.Size = new Size(100, 19);
             checkBox1.TabIndex = 9;
-            checkBox1.Text = "Install Handoff?";
+            checkBox1.Text = "Add Handoff?";
             checkBox1.UseVisualStyleBackColor = true;
             checkBox1.CheckedChanged += checkBox1_CheckedChanged;
             // 
-            // menuStrip1
+            // pictureBox1
             // 
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(478, 24);
-            menuStrip1.TabIndex = 10;
-            menuStrip1.Text = "menuStrip1";
+            pictureBox1.BackgroundImage = Freedeck_Installer.Properties.Resources.logo_big;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox1.Location = new Point(300, 81);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(154, 84);
+            pictureBox1.TabIndex = 10;
+            pictureBox1.TabStop = false;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(478, 247);
+            BackgroundImageLayout = ImageLayout.Zoom;
+            ClientSize = new Size(461, 205);
+            Controls.Add(pictureBox1);
             Controls.Add(checkBox1);
             Controls.Add(label4);
             Controls.Add(richTextBox1);
@@ -158,12 +163,12 @@
             Controls.Add(label2);
             Controls.Add(progressBar1);
             Controls.Add(label1);
-            Controls.Add(menuStrip1);
-            MainMenuStrip = menuStrip1;
+            DoubleBuffered = true;
             Name = "Form1";
             Text = "Freedeck Installer";
             Load += Form1_Load;
             Shown += Form1_Ready;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -181,6 +186,6 @@
         private RichTextBox richTextBox1;
         private Label label4;
         private CheckBox checkBox1;
-        private MenuStrip menuStrip1;
+        private PictureBox pictureBox1;
     }
 }

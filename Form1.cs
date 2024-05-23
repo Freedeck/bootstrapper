@@ -42,6 +42,10 @@ namespace FreedeckLauncher
 
         private void Form1_Ready(object? sender, EventArgs e)
         {
+            label1.BackColor = Color.Transparent;
+            label2.BackColor = Color.Transparent;
+            label3.BackColor = Color.Transparent;
+            label4.BackColor = Color.Transparent;
             //this.Hide();
         }
 
