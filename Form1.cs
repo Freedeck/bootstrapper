@@ -114,10 +114,16 @@ namespace FreedeckLauncher
                 this.StepThree();
             });
         }
-
         private void StepThree()
         {
-            richTextBox1.Text += "Step 3: Creating desktop shortcuts!\n";
+            LauncherBootstrap launcher = new LauncherBootstrap();
+            launcher.ShowDialog();
+            StepFour();
+        }
+
+        private void StepFour()
+        {
+            richTextBox1.Text += "Step 4: Creating desktop shortcuts!\n";
             CreateShortcut(
                 "Freedeck",
                 Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
@@ -133,17 +139,22 @@ namespace FreedeckLauncher
                 where + "\\freedeck\\assets\\logo_big.ico"
             );
             if (checkBox1.Checked) InstallHandoff();
+            Finished();
+        }
+
+        private void Finished()
+        {
+            progressBar1.Value = 100;
+            richTextBox1.Text += "Created shortcut on your Desktop!\n";
+            richTextBox1.Text += "\n\nFreedeck is now installed!\nHave fun!\n";
+            button1.Text = "Installed";
+            label2.Text = "Freedeck is currently installed on your machine. Have fun!";
         }
 
         private void InstallHandoff()
         {
             HandoffBootstrap handoffBootstrap = new HandoffBootstrap();
             handoffBootstrap.ShowDialog();
-            progressBar1.Value = 100;
-            richTextBox1.Text += "Created shortcut on your Desktop!\n";
-            richTextBox1.Text += "\n\nFreedeck is now installed!\nHave fun!\n";
-            button1.Text = "Installed";
-            label2.Text = "Freedeck is currently installed on your machine. Have fun!"; 
         }
 
         public static void CreateShortcut(string shortcutName, string shortcutPath, string targetFileLocation, string arg, string icon)

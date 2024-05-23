@@ -53,6 +53,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="LauncherBootstrap.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="HandoffBootstrap.cs">
       <SubType>Form</SubType>
     </Compile>
