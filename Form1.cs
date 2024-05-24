@@ -142,11 +142,10 @@ namespace FreedeckLauncher
             if (checkBox1.Checked) InstallHandoff();
             Finished();
         }
-
+        
         private void Finished()
         {
             progressBar1.Value = 100;
-            richTextBox1.Text += "Created shortcut on your Desktop & Start menu!\n";
             richTextBox1.Text += "\n\nFreedeck is now installed!\nHave fun!\n";
             button1.Text = "Installed";
             label2.Text = "Freedeck is currently installed on your machine. Have fun!\n\nYou may now close the installer.";
@@ -163,9 +162,10 @@ namespace FreedeckLauncher
             handoffBootstrap.ShowDialog();
         }
 
-        public static void CreateShortcut(string shortcutName, string shortcutPath, string targetFileLocation, string arg, string icon)
+        public void CreateShortcut(string shortcutName, string shortcutPath, string targetFileLocation, string arg, string icon)
         {
-            string shortcutLocation = System.IO.Path.Combine(shortcutPath, shortcutName + ".lnk");
+            if (!checkBox2.Checked) return;
+            string shortcutLocation = Path.Combine(shortcutPath, shortcutName + ".lnk");
             WshShell shell = new WshShell();
             IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutLocation);
 
@@ -174,6 +174,7 @@ namespace FreedeckLauncher
             shortcut.TargetPath = targetFileLocation;                 // The path of the file that will launch when the shortcut is run
             shortcut.Arguments = arg;
             shortcut.Save();
+            richTextBox1.Text += "Created shortcut on your " + shortcutPath + "\n";
         }
 
         private void button2_Click(object sender, EventArgs e)

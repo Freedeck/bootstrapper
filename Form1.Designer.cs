@@ -40,6 +40,7 @@
             label4 = new Label();
             checkBox1 = new CheckBox();
             pictureBox1 = new PictureBox();
+            checkBox2 = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -57,7 +58,7 @@
             // 
             progressBar1.Location = new Point(110, 171);
             progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(266, 23);
+            progressBar1.Size = new Size(266, 31);
             progressBar1.TabIndex = 1;
             progressBar1.Click += progressBar1_Click;
             // 
@@ -75,7 +76,7 @@
             // 
             button1.Location = new Point(379, 171);
             button1.Name = "button1";
-            button1.Size = new Size(75, 23);
+            button1.Size = new Size(75, 31);
             button1.TabIndex = 3;
             button1.Text = "Install!";
             button1.UseVisualStyleBackColor = true;
@@ -128,7 +129,7 @@
             checkBox1.AutoSize = true;
             checkBox1.Checked = true;
             checkBox1.CheckState = CheckState.Checked;
-            checkBox1.Location = new Point(4, 175);
+            checkBox1.Location = new Point(4, 171);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(100, 19);
             checkBox1.TabIndex = 9;
@@ -146,12 +147,25 @@
             pictureBox1.TabIndex = 10;
             pictureBox1.TabStop = false;
             // 
+            // checkBox2
+            // 
+            checkBox2.AutoSize = true;
+            checkBox2.Checked = true;
+            checkBox2.CheckState = CheckState.Checked;
+            checkBox2.Location = new Point(4, 190);
+            checkBox2.Name = "checkBox2";
+            checkBox2.Size = new Size(102, 19);
+            checkBox2.TabIndex = 11;
+            checkBox2.Text = "Make shortcut";
+            checkBox2.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.Zoom;
-            ClientSize = new Size(461, 205);
+            ClientSize = new Size(461, 214);
+            Controls.Add(checkBox2);
             Controls.Add(pictureBox1);
             Controls.Add(checkBox1);
             Controls.Add(label4);
@@ -187,5 +201,6 @@
         private Label label4;
         private CheckBox checkBox1;
         private PictureBox pictureBox1;
+        private CheckBox checkBox2;
     }
 }

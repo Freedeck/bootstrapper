@@ -35,6 +35,8 @@ namespace FreedeckLauncher
             proc.StartInfo.FileName = folder + "\\Freedeck\\handoff.exe";
             proc.StartInfo.Arguments = "--setup";
             proc.EnableRaisingEvents = true;
+            proc.StartInfo.UseShellExecute = true;
+            proc.StartInfo.Verb = "runas";
             proc.Exited += Proc_Exited;
             proc.Start();
         }
