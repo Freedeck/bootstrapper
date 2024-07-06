@@ -14,6 +14,7 @@ namespace FreedeckLauncher
             InitializeComponent();
         }
 
+        int step = 1;
         String folder = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         String where;
         private void Form1_Load(object sender, EventArgs e)
@@ -70,7 +71,16 @@ namespace FreedeckLauncher
                 richTextBox1.Text += "Installed git!\n";
             }
             richTextBox1.Text += "Here we go!\n";
-            richTextBox1.Text += "Step 1: Clone repository (github: freedeck/freedeck) to " + where + "\n";
+            richTextBox1.Text += "Step " + step + ": Checking for Node.js\n";
+            if (!Directory.Exists("C:\\Program Files\\nodejs"))
+            {
+                richTextBox1.Text += "Couldn't find Node; opening bootstrapper!\n";
+                NodeBootstrap ns = new NodeBootstrap();
+                ns.ShowDialog();
+                richTextBox1.Text += "Installed!";
+            }
+            step++;
+            richTextBox1.Text += "Step " + step + ": Clone repository (github: freedeck/freedeck) to " + where + "\n";
             progressBar1.Value = 10;
             Process proc = new Process();
             proc.StartInfo.FileName = "git";
@@ -94,7 +104,8 @@ namespace FreedeckLauncher
 
         private void StepTwo()
         {
-            richTextBox1.Text += "Step 2: Install npm dependencies\n";
+            step++;
+            richTextBox1.Text += "Step " + step + ": Install npm dependencies\n";
             Process proc = new Process();
             proc.StartInfo.FileName = "npm";
             proc.StartInfo.UseShellExecute = true;
@@ -116,7 +127,8 @@ namespace FreedeckLauncher
         }
         private void StepThree()
         {
-            richTextBox1.Text += "Step 3: Downloading Launcher\n";
+            step++;
+            richTextBox1.Text += "Step "+step+": Downloading Launcher\n";
             LauncherBootstrap launcher = new LauncherBootstrap();
             launcher.ShowDialog();
             StepFour();
@@ -124,7 +136,7 @@ namespace FreedeckLauncher
 
         private void StepFour()
         {
-            richTextBox1.Text += "Step 4: Creating desktop shortcuts!\n";
+            richTextBox1.Text += "Step "+step+": Creating desktop shortcuts!\n";
             CreateShortcut(
                 "Freedeck",
                 Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
