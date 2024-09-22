@@ -32,6 +32,7 @@ namespace FreedeckLauncher
         {
             label2.Text = "Please follow the git installer's instructions!";
             Process proc = new Process();
+            proc.StartInfo.WorkingDirectory = folder;
             proc.StartInfo.FileName = folder + "\\git-installer.exe";
             proc.EnableRaisingEvents = true;
             proc.Exited += Proc_Exited;

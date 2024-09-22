@@ -32,6 +32,7 @@ namespace FreedeckLauncher
         {
             label2.Text = "Please follow the Node.js installer's instructions!";
             Process proc = new Process();
+            proc.StartInfo.WorkingDirectory = folder;
             proc.StartInfo.FileName = folder + "\\node-installer.msi";
             proc.EnableRaisingEvents = true;
             proc.Exited += Proc_Exited;
