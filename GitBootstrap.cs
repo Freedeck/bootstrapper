@@ -18,7 +18,7 @@ namespace FreedeckLauncher
         {
             InitializeComponent();
         }
-        String folder = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        String folder = System.Environment.GetFolderPath(Environment.SpecialFolder.InternetCache);
 
         private void GitBootstrap_Load(object sender, EventArgs e)
         {

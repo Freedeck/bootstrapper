@@ -39,9 +39,9 @@
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.Location = new Point(12, 9);
             label1.Name = "label1";
-            label1.Size = new Size(244, 32);
+            label1.Size = new Size(273, 32);
             label1.TabIndex = 1;
-            label1.Text = "Freedeck: Git Needed";
+            label1.Text = "Freedeck: Node Needed";
             // 
             // label2
             // 
@@ -49,9 +49,9 @@
             label2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.Location = new Point(12, 41);
             label2.Name = "label2";
-            label2.Size = new Size(353, 15);
+            label2.Size = new Size(379, 15);
             label2.TabIndex = 3;
-            label2.Text = "We couldn't find git! We're automagically downloading it for you.";
+            label2.Text = "We couldn't find Node.js! We're automagically downloading it for you.";
             // 
             // progressBar1
             // 

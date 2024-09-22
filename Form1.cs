@@ -83,7 +83,7 @@ namespace FreedeckLauncher
             richTextBox1.Text += "Step " + step + ": Clone repository (github: freedeck/freedeck) to " + where + "\n";
             progressBar1.Value = 10;
             Process proc = new Process();
-            proc.StartInfo.FileName = "git";
+            proc.StartInfo.FileName = "C:\\Program Files\\Git\\bin\\git.exe";
             proc.StartInfo.ArgumentList.Add("clone");
             proc.StartInfo.ArgumentList.Add("https://github.com/freedeck/freedeck");
             proc.StartInfo.ArgumentList.Add(where + "\\freedeck");
