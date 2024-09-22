@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             label1 = new Label();
             progressBar1 = new ProgressBar();
             label2 = new Label();
@@ -139,7 +140,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.BackgroundImage = Freedeck_Installer.Properties.Resources.logo_big;
+            pictureBox1.BackgroundImage = Freedeck_Installer.Properties.Resources.logo_big1;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox1.Location = new Point(300, 81);
             pictureBox1.Name = "pictureBox1";
@@ -178,6 +179,7 @@
             Controls.Add(progressBar1);
             Controls.Add(label1);
             DoubleBuffered = true;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
             Text = "Freedeck Installer";
             Load += Form1_Load;
